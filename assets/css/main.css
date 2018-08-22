@@ -1,0 +1,61 @@
+body{
+  color: #ff0000;
+  background-color: turquoise;
+}
+.background{
+  background-color:white;
+  /* background-image: url ("../images/ryubackground.jpg");
+  background-size: cover; 
+  backgroun-blend-mode:*/
+  /* Background image not working */
+
+}
+.jumbotron-fluid{
+
+}
+#hangmanimage{
+
+}
+
+#start-game-button{
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: lightslategray;
+  box-shadow: 5px grey;
+  padding: 5px;
+  font-weight: bold;
+  color: navy;
+  text-transform: uppercase;
+
+}
+/* Add 
+#start-game-button:hover{}
+
+#start-game-button:active*/
+
+#start-icon{
+}
+
+.container-fluid{
+  background-color: darkred;
+
+}
+
+.game-section{
+
+}
+#middle-game-section{
+}
+#guessed-letters{
+
+}
+#guesses-left{
+
+}
+#wins{
+
+}
+#losses{
+
+}

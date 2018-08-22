@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HangMan </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="./assets/javascript/main.js"></script>
+
+  <script src="./assets/javascript/main.js"></script>
+</head>
+
+<body>
+
+  <!-- Top part (Jumbotron) -->
+  <div class="jumbotron-fluid background py-10" id="jumbotron">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 my-3">
+          <img src="./assets/images/hangingman.jpg " height="250px" alt="Hanging Man Image" id="hangmanimage">
+          <!-- Could use a video instead -->
+        </div>
+
+        <div class="col-12 col-md-6 my-3 my-3">
+          <h1>WELCOME TO <br/>Street Fighter Ultra HangMan</h1>
+          <button id="start-game-button">
+            Get Ready to Fight!!
+            <i class="fas fa-angry" id="start-icon"></i>
+            <!-- Button not showing Font -->
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- End top Jumbotron -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class=" col-12 text-center py-5" id="game-section">
+          <div class="container" id="middle-game-section">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h2> Fill These In!!...Or Else
+                  <br/>
+                  <span id="placeholders"> __ __ __ __</span>
+                </h2>
+              </div>
+              <div class="col-12 col-md-6">
+                <h2> Incorrectly use letters ()_()
+                  <br/>
+                  <span id="guessed-letters"></span>
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class= "row">
+      <div class= "col-12 col-md-4 text-center my-5">
+        <h3>
+          Numbers of guesses left: <span id="guesses-left">0</span>
+        </h3>
+      </div>
+      <div class= "col-12 col-md-4 text-center my-10">
+          <h3>
+            Number of W's: <span id="wins">0</span>
+          </h3>
+        </div>
+        <div class= "col-12 col-md-4 text-center my-5">
+            <h3>
+              Number of L's:<span id="losses">0</span>
+            </h3>
+          </div>
+      
+    </div>
+
+</body>
+
+</html>
