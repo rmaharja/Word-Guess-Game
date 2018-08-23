@@ -1,12 +1,12 @@
 body{
   color: #ff0000;
   background-color: turquoise;
+
 }
 .background{
   background-color:white;
-  /* background-image: url ("../images/ryubackground.jpg");
   background-size: cover; 
-  backgroun-blend-mode:*/
+  /* backgroun-blend-mode:*/ */
   /* Background image not working */
 
 }
@@ -34,6 +34,9 @@ body{
 
 #start-game-button:active*/
 
+#placeholders{
+  
+}
 #start-icon{
 }
 

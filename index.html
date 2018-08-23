@@ -10,9 +10,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <script src="./assets/javascript/main.js"></script>
-
-  <script src="./assets/javascript/main.js"></script>
+  <script type= "text/javacript" src="./assets/javascript/main.js"></script>
 </head>
 
 <body>
@@ -26,11 +24,10 @@
           <!-- Could use a video instead -->
         </div>
 
-        <div class="col-12 col-md-6 my-3 my-3">
+        <div class="col-12 col-md-6 my-3">
           <h1>WELCOME TO <br/>Street Fighter Ultra HangMan</h1>
-          <button id="start-game-button">
+          <button id="new-game-button">
             Get Ready to Fight!!
-            <i class="fas fa-angry" id="start-icon"></i>
             <!-- Button not showing Font -->
           </button>
         </div>
@@ -40,11 +37,11 @@
     <!-- End top Jumbotron -->
     <div class="container-fluid">
       <div class="row">
-        <div class=" col-12 text-center py-5" id="game-section">
+        <div class="col-12 text-center py-5" id="game-section">
           <div class="container" id="middle-game-section">
             <div class="row">
               <div class="col-12 col-md-6">
-                <h2> Fill These In!!...Or Else
+                <h2> Guess the word...OR ELSE!!!
                   <br/>
                   <span id="placeholders"> __ __ __ __</span>
                 </h2>
@@ -68,16 +65,17 @@
       </div>
       <div class= "col-12 col-md-4 text-center my-10">
           <h3>
-            Number of W's: <span id="wins">0</span>
+            Number of Victories: <span id="victories">0</span>
           </h3>
         </div>
         <div class= "col-12 col-md-4 text-center my-5">
             <h3>
-              Number of L's:<span id="losses">0</span>
+              Number of times K-O'D:<span id="k-o">0</span>
             </h3>
           </div>
       
     </div>
+    
 
 </body>
 
