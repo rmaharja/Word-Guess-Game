@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>HangMan </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!--<script type= "text/javacript" src="./assets/javascript/main.js"></script>-->
+
+  <script type="text/javascript">
+    //Grab the references of DOM ...Good practice to use "$" for elements from DOM
+    var guessesLeft = document.getElementById("guesses-left");
+    var newGameButton = document.getElementById("new-game-button");
+    var placeholders = document.getElementById("placeholders");
+    var guessedLetters = document.getElementById("guessed-letters");
+    var victories = document.getElementById("victories");
+    var losses = document.getElementById("losses");
+
+
+    //Variables:
+    var wordBank = ["HUGE", "YUGE", "BIGLY", "BELIEVE ME","STUPID", "LOSER", "MORON", "FIRE AND FURY", "GREAT", "INCREDIBLE", "COVFEFE", "FAKE NEWS", "TREMENDOUS", "MONEY", "BILLIONS AND BILLIONS", "CLASSY", "WINNING", "ZERO", "BUILD A WALL", "MAKE AMERICA GREAT AGAIN", "WRONG", "PUTIN", "YOURE FIRED", "BING", "BONG", "BUM BUM BUM", "VERY LONG AND VERY HARD", "I LOVE YOU", "I KNOW WORDS", "WE EAT MCDONALDS", "IM REALLY RICH", "MELANIA", "IVANKA", "IT DID NOT HAPPEN", "ITS GOING TO BE ONLY", "NASTY" ];
+    var victories = 0;
+    var ko = 0;
+    var guessesLeft = 5;
+    var gameOn = false;
+    var pickedWord = ""; //randomword
+    var pickedWordPlaceholderArr = []; //underscores
+    var guessedLetterBank = []; //userguesses
+    var incorrectLetterBank = []; //wrongletter
+
+    
+//reset
+
+
+
+
+
+
+
+    //newGame function to reset everything
+    function newGame() {
+      alert("Do you have what it takes to build a Wall?");
+      alert( "...I mean play this Guessing game?")
+      alert("Win Millions and Billions if you win.")
+      alert( "Press a key to guess the word.")
+      guessesLeft = 5;
+      gameOn = true;
+      pickedWordPlaceholderArr = [];
+      guessedLetterBank = [];
+      incorrectLetterBank = [];
+
+
+      document.getElementById("guesses-left").innerHTML = guessesLeft;
+      document.getElementById("guessed-letters").innerHTML = incorrectLetterBank;
+      // pick new word
+
+      pickedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+      console.log(pickedWord);
+
+      //and creat placeholders of  pickedWord
+      for (var i = 0; i < pickedWord.length; i++) {
+        if (pickedWord[i] === " ") {
+          pickedWordPlaceholderArr.push("\u00A0"+"\u00A0");
+        }
+        else {
+          pickedWordPlaceholderArr.push("_ ");
+        }
+      }
+
+      //Add event listener for new game button
+      //$newGameButton.addEventListener ( "click", newGame());
+      //put info into the DOM (text'C'ontent not text'c'ontent); .join('') takes away the commas in array.
+      
+      document.getElementById("placeholders").innerHTML = pickedWordPlaceholderArr.join('');
+    }
+    
+    //Letter Guess Fucntion start -->
+
+    document.onkeyup = function (event) {
+      guessedLetterBank = event.key.toUpperCase();
+
+      // function letterGuess (letter) {
+      //Make sure the game does not run without hitting the new game button, and checking if letter is existing inside of the word.
+      if (gameOn === true && pickedWord.indexOf(guessedLetterBank) > -1) {
+        //Run Game
+        console.log("correct");
+        for (var i = 0; i < pickedWord.length; i++) {
+
+
+          if (pickedWord[i] === guessedLetterBank) {
+            pickedWordPlaceholderArr[i] = guessedLetterBank;
+
+            document.getElementById("placeholders").innerHTML = pickedWordPlaceholderArr.join(" ");
+
+          }
+        }
+        //if arrayCheck of placeholders=0, then all letters guessed correctly. Winner.
+          arrayCheck = pickedWordPlaceholderArr.includes("_ ");
+          if (arrayCheck == false) {
+            victories++;
+            document.getElementById("victories").innerHTML= victories;
+            alert("Don't you post fake News of your Victory.");
+            alert( "Press Cancel if you don't want to play another game")
+            alert( "Good Choice.  Let's play again.")
+            newGame();
+            //do something to start a new game and announce victory;
+          }
+      }
+
+
+      else {
+        alert("WRONG")
+        //put wrong letter into incorrectly used letter bank
+        incorrectLetterBank.push(guessedLetterBank);
+      document.getElementById("guessed-letters").innerHTML = incorrectLetterBank;
+
+        //minus one for guessing wrong
+      guessesLeft--;
+      document.getElementById("guesses-left").innerHTML = guessesLeft;
+      if (guessesLeft<1){
+        alert(" I know words");
+        alert( "Try Again");
+        losses++;
+        document.getElementById("losses").innerHTML= losses;
+        resetGame();
+      }
+
+      //if guesses left is less than one, game ove      
+
+
+      }
+      //   function resetgame(){
+      // guessesLeft = 15;
+      // gameOn = false;
+      // pickedWordPlaceholderArr = [];
+      // guessedLetterBank = [];
+      // incorrectLetterBank = []
+        
+      }
+    
+
+//Check if guessed letteris in my picked wordbank
+  //     for (var i=0; i< pickedWord.length; i++){ 
+  // //converting both values to all upper case for comparison, but still appear as the actual one
+  //       if (pickedWord[i].toUpperCase()=== letter.toUpperCase()){
+//Replace pickedwordplaceholder with picked word
+  //       pickedWordPlaceholderArr[i] = pickedWord[i];
+  //   }
+
+  //   $placeholders.textContent= pickedWordPlaceholderArr.join ("");
+  // }
+
+  // }
+  //   if(gameRunning==false){
+  //     alert("Start a New game")
+  //   }
+  //   else{
+  //     alert("Pick another letter")
+  //   }
+
+
+
+//Add onkeyup even to trigger letterguess
+// document.onkeypress= function(e){
+//   if (event.keyCode >= 65 && event.keyCode <= 90) {
+//   letterGuess(event.key);
+//   }
+// }
+//checkIncorrect letter
+
+//check if losing
+
+//check if we win
+
+
+
+// 1.press a key to guess
+// 2.display letters if correct 
+// 3.add to words already guessed
+// 4.add to incorrect letter bank if wrong 
+// 5.minus one life life if wrong
+// 6.Steps 1-6 again until life=0 or word correctly guessed
+// 7. If all lives lost then display "YOu lost", add to Losses. Play a sad song 
+// 8. If game won, display "you won", add to wins, Play happy song. 
+// 9. Start a new game button 
+// Start from step 1 again. 
+  </script>
+</head>
+
+<body>
+
+  <!-- Top part (Jumbotron) -->
+  <div class="jumbotron-fluid background py-10" id="jumbotron">
+    <div class="container py-5">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 my-3">
+          <img src="./assets/images/hangingman.jpg " height="250px" alt="Hanging Man Image" id="hangmanimage">
+          <!-- Could use a video instead -->
+        </div>
+
+        <div class="col-12 col-md-6 my-3">
+          <h1>LETS MAKE AMERICA SMART AGAIN</h1>
+          <input type="button" id="new-game-button" value="New Game" onClick="newGame()" /><p>BingBongBingBong</p>
+          <a href= "index.html"></a><input type="button" id="reset-game-button" value="Reset Game"></a>
+
+
+          
+          <!-- Button not showing Font -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End top Jumbotron -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-center py-5" id="game-section">
+        <div class="container" id="middle-game-section">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <h2> Guess
+                <br/>
+                <span id="placeholders"> _ _ __ __</span>
+              </h2>
+            </div>
+            <div class="col-12 col-md-6">
+              <h2> Incorrectly use letters ()_()
+                <br/>
+                <span id="guessed-letters"></span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-4 text-center my-5">
+      <h3>
+        Numbers of guesses left:
+        <span id="guesses-left">0</span>
+      </h3>
+    </div>
+    <div class="col-12 col-md-4 text-center my-10">
+      <h3>
+        Number of times you Cheated:
+        <span id="victories">0</span>
+      </h3>
+    </div>
+    <div class="col-12 col-md-4 text-center my-5">
+      <h3>
+        I am smarter than you this many times:
+        <span id="losses">0</span>
+      </h3>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

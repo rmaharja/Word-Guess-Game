@@ -1,21 +1,32 @@
 body{
-  color: #ff0000;
-  background-color: turquoise;
-
+  color:#ff0800e7 ;
+  font-family: cursive;
+  
+background-color: #003cff;
 }
 .background{
   background-color:white;
   background-size: cover; 
+  color: whitesmoke;
   /* backgroun-blend-mode:*/ */
   /* Background image not working */
 
 }
+#guess{
+  text-align: left;
+
+}
+#topright{
+}
 .jumbotron-fluid{
-
+background-color: #ff0800e7 ;
+color: white;
 }
-#hangmanimage{
 
+#bottomgamesection{
+  color: white;
 }
+
 
 #start-game-button{
   cursor: pointer;
@@ -25,7 +36,7 @@ body{
   box-shadow: 5px grey;
   padding: 5px;
   font-weight: bold;
-  color: navy;
+  color: rgb(255, 0, 0);
   text-transform: uppercase;
 
 }
@@ -41,7 +52,7 @@ body{
 }
 
 .container-fluid{
-  background-color: darkred;
+  background-color:white;
 
 }
 

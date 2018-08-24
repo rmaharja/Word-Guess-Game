@@ -10,73 +10,83 @@
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <script type= "text/javacript" src="./assets/javascript/main.js"></script>
+  <!--<script type= "text/javacript" src="./assets/javascript/main.js"></script>-->
+
+  <script type="text/javascript" src= "./assets/javascript/main.js"></script>
+
 </head>
 
 <body>
-
+  <div class= "container">
   <!-- Top part (Jumbotron) -->
   <div class="jumbotron-fluid background py-10" id="jumbotron">
     <div class="container py-5">
       <div class="row align-items-center">
         <div class="col-12 col-md-6 my-3">
-          <img src="./assets/images/hangingman.jpg " height="250px" alt="Hanging Man Image" id="hangmanimage">
+            <div class="tenor-gif-embed" data-postid="9407460" data-share-method="host" data-width="100%" data-aspect-ratio="1.7777777777777777"><a href="https://tenor.com/view/president-donald-trump-bing-bong-gif-9407460">Donald Trump Speech GIF</a> from <a href="https://tenor.com/search/donaldtrump-gifs">Donaldtrump GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+          <!-- <img src="./assets/images/hangingman.jpg " height="250px" alt="Hanging Man Image" id="hangmanimage"> -->
           <!-- Could use a video instead -->
         </div>
 
-        <div class="col-12 col-md-6 my-3">
-          <h1>WELCOME TO <br/>Street Fighter Ultra HangMan</h1>
-          <button id="new-game-button">
-            Get Ready to Fight!!
-            <!-- Button not showing Font -->
-          </button>
+        <div class="col-12 col-md-6 my-3" id= "topright">
+          <h1>LETS MAKE AMERICA SMART AGAIN</h1>
+          <input type="button" id="new-game-button" value="New Game" onClick="newGame()" /><p>BingBongBingBong</p>
+          <a href= "index.html"><input type="button" id="reset-game-button" value="Reset Game"></input></a>
+
+
+          
+          <!-- Button not showing Font -->
+
         </div>
       </div>
     </div>
-    </div>
-    <!-- End top Jumbotron -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 text-center py-5" id="game-section">
-          <div class="container" id="middle-game-section">
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <h2> Guess the word...OR ELSE!!!
-                  <br/>
-                  <span id="placeholders"> __ __ __ __</span>
-                </h2>
-              </div>
-              <div class="col-12 col-md-6">
-                <h2> Incorrectly use letters ()_()
-                  <br/>
-                  <span id="guessed-letters"></span>
-                </h2>
-              </div>
+  </div>
+  <!-- End top Jumbotron -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-center py-5" id="game-section">
+        <div class="container" id="middle-game-section">
+          <div class="row">
+            <div class="col-12 col-md-9" id= "guess">
+              <h2> Guess
+                <br/>
+                <span id="placeholders"> __ __ __ __</span>
+              </h2>
+            </div>
+            <div class="col-12 col-md-3">
+              <h2> Fake Letter Bank
+                <br/>
+                <span id="guessed-letters"></span>
+              </h2>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class= "row">
-      <div class= "col-12 col-md-4 text-center my-5">
-        <h3>
-          Numbers of guesses left: <span id="guesses-left">0</span>
-        </h3>
-      </div>
-      <div class= "col-12 col-md-4 text-center my-10">
-          <h3>
-            Number of Victories: <span id="victories">0</span>
-          </h3>
-        </div>
-        <div class= "col-12 col-md-4 text-center my-5">
-            <h3>
-              Number of times K-O'D:<span id="k-o">0</span>
-            </h3>
-          </div>
-      
+  </div>
+  <div class="row" id="bottomgamesection">
+    <div class="col-12 col-md-4 text-center my-5">
+      <h3>
+        Numbers of guesses left:
+        <span id="guesses-left">0</span>
+      </h3>
     </div>
-    
+    <div class="col-12 col-md-4 text-center my-10">
+      <h3>
+        Number of times you Cheated:
+        <span id="victories">0</span>
+      </h3>
+    </div>
+    <div class="col-12 col-md-4 text-center my-5">
+      <h3>
+        I am smarter than you this many times:
+        <span id="losses">0</span>
+      </h3>
+    </div>
 
+  </div>
+
+</div>
 </body>
 
 </html>

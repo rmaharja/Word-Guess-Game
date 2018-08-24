@@ -1,100 +1,125 @@
-//Grab the references of DOM ...Good practice to use "$" for elements from DOM
-var $guessesLeft= document.getElementById("guesses-left");
-var $newGameButton= document.getElementById("new-game-button");
-var $placeholders= document.getElementById("placeholders");
-var $guessedLetters= document.getElementById("guessed-letters");
-var $victories= document.getElementById("victories");
-var $ko= document.getElementById("k-o");
+    //Grab the references of DOM ...Good practice to use "$" for elements from DOM
+
+var guessesLeft = document.getElementById("guesses-left");
+var newGameButton = document.getElementById("new-game-button");
+var placeholders = document.getElementById("placeholders");
+var guessedLetters = document.getElementById("guessed-letters");
+var victories = document.getElementById("victories");
+var losses = document.getElementById("losses");
 
 
 //Variables:
-var wordBank= ["RYU", "KEN", "GUILE", "VEGA", "AKUMA", "CAMMY", "DHALSIM", "ZANGIEF", "SAGAT", "BLANKA", "BALROG", "IBUKI", "ROLENTO", "M BISON", "E HONDA"];
-var victories= 0;
-var ko= 0;
-var guessesLeft= 5;
-var gameOn= false;
-var pickedWord= "";
-var pickedWordPlaceholderArr=[];
-var guessedLetterBank= [];
-var incorrectLetterBank= [];
+var wordBank = ["HUGE", "YUGE", "BIGLY", "BELIEVE ME","STUPID", "LOSER", "MORON", "FIRE AND FURY", "GREAT", "INCREDIBLE", "COVFEFE", "FAKE NEWS", "TREMENDOUS", "MONEY", "BILLIONS AND BILLIONS", "CLASSY", "WINNING", "ZERO", "BUILD A WALL", "MAKE AMERICA GREAT AGAIN", "WRONG", "PUTIN", "YOURE FIRED", "BING", "BONG", "BUM BUM BUM", "VERY LONG AND VERY HARD", "I LOVE YOU", "I KNOW WORDS", "WE EAT MCDONALDS", "IM REALLY RICH", "MELANIA", "IVANKA", "IT DID NOT HAPPEN", "ITS GOING TO BE ONLY", "NASTY" ];
+var victories = 0;
+var ko = 0;
+var guessesLeft = 7;
+var gameOn = false;
+var pickedWord = ""; //randomword
+var pickedWordPlaceholderArr = []; //underscores
+var guessedLetterBank = []; //userguesses
+var incorrectLetterBank = []; //wrongletter
+
+
+//reset
+
+
+
+
+
+
 
 //newGame function to reset everything
-function newGame (){
-  guessesLeft=5;
-  gameOn= true;
-  pickedWordPlaceholderArr= [];
-  guessedLetterBank= [];
-  incorrectLetterBank= [];
+function newGame() {
+  alert("Do you have what it takes to build a Wall?");
+  alert( "...I mean play this Guessing game?")
+  alert("Win Millions and Billions if you win.")
+  alert( "Press a key to guess the word.")
+  guessesLeft = 7;
+  gameOn = true;
+  pickedWordPlaceholderArr = [];
+  guessedLetterBank = [];
+  incorrectLetterBank = [];
 
-}
-// pick new word
-pickedWord= wordBank[Math.floor(Math.random()*wordBank.length)];
 
-//and creat placeholders of  pickedWord
-for (var i=0; i<pickedWord.length;i++){
-    if (pickedWord[i]=== " "){
-      pickedWordPlaceholderArr.push(" ");
+  document.getElementById("guesses-left").innerHTML = guessesLeft;
+  document.getElementById("guessed-letters").innerHTML = incorrectLetterBank;
+  // pick new word
+
+  pickedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+  console.log(pickedWord);
+
+  //and creat placeholders of  pickedWord
+  for (var i = 0; i < pickedWord.length; i++) {
+    if (pickedWord[i] === " ") {
+      pickedWordPlaceholderArr.push("\u00A0"+"\u00A0");
     }
     else {
-      pickedWordPlaceholderArr.push ("_");
-    }
-}
-
-//Add event listener for new game button
-$newGameButton.addEventListener ( "click", newGame)
-
-//put info into the DOM (text'C'ontent not text'c'ontent); .join('') takes away the commas in array.
-$guessesLeft.textContent = guessesLeft;
-$placeholders.textContent= pickedWordPlaceholderArr.join('');
-$guessedLetters.textContent= incorrectLetterBank;
-
-//letterGuess function, takes in the letter you pressed and sees if it's in the selected word
-
-function letterGuess () {
-  console.log(letter);
-  //Make sure the game does not run without hitting the new game button.
-  if (gameRunning && guessedLetterBank.indexOf(letter)===-1){
-//Run Game
-guessedLetterBank.push(letter);
-
-//Check if guessed letteris in my picked wordbank
-for (vari=0; i< pickedWord.length; i++){ 
-  //converting both values to all upper case for comparison, but still appear as the actual one
-    if (pickedWord[i].toUpperCase()=== letter.toUpperCase()){
-
-      pickedWordPlaceholderArr[i]= pickedWord[i];
-    }
-    $placeholders.textContent= pickedWordPlaceholderArr.join ("");
-  }
-  else{
-    if (gameRunning===false){
-      alert("Start a New game")
-    }
-    else{
-      alert("Pick another letter")
+      pickedWordPlaceholderArr.push("_ ");
     }
   }
+
+  //Add event listener for new game button
+  //$newGameButton.addEventListener ( "click", newGame());
+  //put info into the DOM (text'C'ontent not text'c'ontent); .join('') takes away the commas in array.
+  
+  document.getElementById("placeholders").innerHTML = pickedWordPlaceholderArr.join('');
 }
 
-//Add onkeyup even to trigger letterguess
-document.onkeyup= function(event){
-  letterGuess(event.key);
-}
-//checkIncorrect letter
+//Letter Guess Fucntion start -->
 
-//check if losing
+document.onkeyup = function (event) {
+  guessedLetterBank = event.key.toUpperCase();
 
-//check if we win
+  // function letterGuess (letter) {
+  //Make sure the game does not run without hitting the new game button, and checking if letter is existing inside of the word.
+  if (gameOn === true && pickedWord.indexOf(guessedLetterBank) > -1) {
+    //Run Game
+    console.log("correct");
+    for (var i = 0; i < pickedWord.length; i++) {
 
 
+      if (pickedWord[i] === guessedLetterBank) {
+        pickedWordPlaceholderArr[i] = guessedLetterBank;
 
-// 1.press a key to guess
-// 2.display letters if correct 
-// 3.add to words already guessed
-// 4.add to incorrect letter bank if wrong 
-// 5.minus one life life if wrong
-// 6.Steps 1-6 again until life=0 or word correctly guessed
-// 7. If all lives lost then display "YOu lost", add to Losses. Play a sad song 
-// 8. If game won, display "you won", add to wins, Play happy song. 
-// 9. Start a new game button 
-// Start from step 1 again. 
+        document.getElementById("placeholders").innerHTML = pickedWordPlaceholderArr.join(" ");
+
+      }
+    }
+    //if arrayCheck of placeholders=0, then all letters guessed correctly. Winner.
+      arrayCheck = pickedWordPlaceholderArr.includes("_ ");
+      if (arrayCheck == false) {
+        victories++;
+        document.getElementById("victories").innerHTML= victories;
+        alert("Don't you post fake News of your Victory.");
+        alert( "Press Cancel if you don't want to play another game")
+        alert( "Good Choice.  Let's play again.")
+        newGame();
+        //do something to start a new game and announce victory;
+      }
+  }
+
+
+  else {
+    alert("WRONG")
+    //put wrong letter into incorrectly used letter bank
+    incorrectLetterBank.push(guessedLetterBank);
+  document.getElementById("guessed-letters").innerHTML = incorrectLetterBank;
+
+    //minus one for guessing wrong
+  guessesLeft--;
+  document.getElementById("guesses-left").innerHTML = guessesLeft;
+  if (guessesLeft<1){
+    alert(" I know words");
+    alert( "Try Again");
+    losses++;
+    document.getElementById("losses").innerHTML= losses;
+    newGame();
+  }
+
+  //if guesses left is less than one, game ove      
+
+
+  }
+    
+  }
+
