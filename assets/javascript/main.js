@@ -1,11 +1,6 @@
     //Grab the references of DOM ...Good practice to use "$" for elements from DOM
 
-var guessesLeft = document.getElementById("guesses-left");
-var newGameButton = document.getElementById("new-game-button");
-var placeholders = document.getElementById("placeholders");
-var guessedLetters = document.getElementById("guessed-letters");
-var victories = document.getElementById("victories");
-var losses = document.getElementById("losses");
+
 
 
 //Variables:
@@ -14,10 +9,10 @@ var victories = 0;
 var ko = 0;
 var guessesLeft = 7;
 var gameOn = false;
-var pickedWord = ""; //randomword
-var pickedWordPlaceholderArr = []; //underscores
-var guessedLetterBank = []; //userguesses
-var incorrectLetterBank = []; //wrongletter
+var newWord = ""; //randomword
+var underscoreArr = []; //underscores
+var guessedLetter = []; //userguesses
+var wrongLetter = []; //wrongletter
 
 
 //reset
@@ -36,25 +31,25 @@ function newGame() {
   alert( "Press a key to guess the word.")
   guessesLeft = 7;
   gameOn = true;
-  pickedWordPlaceholderArr = [];
-  guessedLetterBank = [];
-  incorrectLetterBank = [];
+  underscoreArr = [];
+  guessedLetter = [];
+  wrongLetter = [];
 
 
   document.getElementById("guesses-left").innerHTML = guessesLeft;
-  document.getElementById("guessed-letters").innerHTML = incorrectLetterBank;
+  document.getElementById("guessed-letters").innerHTML = wrongLetter;
   // pick new word
 
-  pickedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-  console.log(pickedWord);
+  newWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+  console.log(newWord);
 
-  //and creat placeholders of  pickedWord
-  for (var i = 0; i < pickedWord.length; i++) {
-    if (pickedWord[i] === " ") {
-      pickedWordPlaceholderArr.push("\u00A0"+"\u00A0");
+  //and creat underscores of  newWord
+  for (var i = 0; i < newWord.length; i++) {
+    if (newWord[i] === " ") {
+      underscoreArr.push("\u00A0"+"\u00A0");
     }
     else {
-      pickedWordPlaceholderArr.push("_ ");
+      underscoreArr.push("_ ");
     }
   }
 
@@ -62,31 +57,31 @@ function newGame() {
   //$newGameButton.addEventListener ( "click", newGame());
   //put info into the DOM (text'C'ontent not text'c'ontent); .join('') takes away the commas in array.
   
-  document.getElementById("placeholders").innerHTML = pickedWordPlaceholderArr.join('');
+  document.getElementById("underscores").innerHTML = underscoreArr.join('');
 }
 
 //Letter Guess Fucntion start -->
 
 document.onkeyup = function (event) {
-  guessedLetterBank = event.key.toUpperCase();
+  guessedLetter = event.key.toUpperCase();
 
   // function letterGuess (letter) {
   //Make sure the game does not run without hitting the new game button, and checking if letter is existing inside of the word.
-  if (gameOn === true && pickedWord.indexOf(guessedLetterBank) > -1) {
+  if (gameOn === true && newWord.indexOf(guessedLetter) > -1) {
     //Run Game
     console.log("correct");
-    for (var i = 0; i < pickedWord.length; i++) {
+    for (var i = 0; i < newWord.length; i++) {
 
 
-      if (pickedWord[i] === guessedLetterBank) {
-        pickedWordPlaceholderArr[i] = guessedLetterBank;
+      if (newWord[i] === guessedLetter) {
+        underscoreArr[i] = guessedLetter;
 
-        document.getElementById("placeholders").innerHTML = pickedWordPlaceholderArr.join(" ");
+        document.getElementById("underscores").innerHTML = underscoreArr.join(" ");
 
       }
     }
-    //if arrayCheck of placeholders=0, then all letters guessed correctly. Winner.
-      arrayCheck = pickedWordPlaceholderArr.includes("_ ");
+    //if arrayCheck of underscores=0, then all letters guessed correctly. Winner.
+      arrayCheck = underscoreArr.includes("_ ");
       if (arrayCheck == false) {
         victories++;
         document.getElementById("victories").innerHTML= victories;
@@ -102,8 +97,8 @@ document.onkeyup = function (event) {
   else {
     alert("WRONG")
     //put wrong letter into incorrectly used letter bank
-    incorrectLetterBank.push(guessedLetterBank);
-  document.getElementById("guessed-letters").innerHTML = incorrectLetterBank;
+    wrongLetter.push(guessedLetter);
+  document.getElementById("guessed-letters").innerHTML = wrongLetter;
 
     //minus one for guessing wrong
   guessesLeft--;
@@ -111,7 +106,7 @@ document.onkeyup = function (event) {
   if (guessesLeft<1){
     alert ("You're a Yuge failure. You're FIRED!!")
     alert(" I know words");
-    alert( pickedWord+ " was the word")
+    alert( newWord+ " was the word")
 
     alert( "Try Again");
     losses++;

@@ -8,6 +8,7 @@ background-color: #003cff;
   background-color:white;
   background-size: cover; 
   color: whitesmoke;
+  background: url(../images/hangingman.jpg)
   /* backgroun-blend-mode:*/ */
   /* Background image not working */
 
@@ -47,7 +48,7 @@ height: auto;
 
 #start-game-button:active*/
 
-#placeholders{
+#underscores{
   
 }
 #start-icon{
