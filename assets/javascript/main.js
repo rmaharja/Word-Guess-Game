@@ -109,7 +109,10 @@ document.onkeyup = function (event) {
   guessesLeft--;
   document.getElementById("guesses-left").innerHTML = guessesLeft;
   if (guessesLeft<1){
+    alert ("You're a Yuge failure. You're FIRED!!")
     alert(" I know words");
+    alert( pickedWord+ " was the word")
+
     alert( "Try Again");
     losses++;
     document.getElementById("losses").innerHTML= losses;
