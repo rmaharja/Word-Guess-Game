@@ -27,7 +27,7 @@ var incorrectLetterBank = []; //wrongletter
 
 
 
-
+alert("Press New Game to start");
 //newGame function to reset everything
 function newGame() {
   alert("Do you have what it takes to build a Wall?");
