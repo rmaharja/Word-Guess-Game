@@ -6,6 +6,7 @@
 //Variables:
 var wordBank = ["HUGE", "YUGE", "BIGLY", "BELIEVE ME","STUPID", "LOSER", "MORON", "FIRE AND FURY", "GREAT", "INCREDIBLE", "COVFEFE", "FAKE NEWS", "TREMENDOUS", "MONEY", "BILLIONS AND BILLIONS", "CLASSY", "WINNING", "ZERO", "BUILD A WALL", "MAKE AMERICA GREAT AGAIN", "WRONG", "PUTIN", "YOURE FIRED", "BING", "BONG", "BUM BUM BUM", "VERY LONG AND VERY HARD", "I LOVE YOU", "I KNOW WORDS", "WE EAT MCDONALDS", "IM REALLY RICH", "MELANIA", "IVANKA", "IT DID NOT HAPPEN", "ITS GOING TO BE ONLY", "NASTY" ];
 var victories = 0;
+var losses= 0;
 var ko = 0;
 var guessesLeft = 7;
 var gameOn = false;
@@ -13,7 +14,6 @@ var newWord = ""; //randomword
 var underscoreArr = []; //underscores
 var guessedLetter = []; //userguesses
 var wrongLetter = []; //wrongletter
-
 
 //reset
 
@@ -35,9 +35,11 @@ function newGame() {
   guessedLetter = [];
   wrongLetter = [];
 
-
   document.getElementById("guesses-left").innerHTML = guessesLeft;
   document.getElementById("guessed-letters").innerHTML = wrongLetter;
+
+
+
   // pick new word
 
   newWord = wordBank[Math.floor(Math.random() * wordBank.length)];
@@ -52,19 +54,16 @@ function newGame() {
       underscoreArr.push("_ ");
     }
   }
-
-  //Add event listener for new game button
-  //$newGameButton.addEventListener ( "click", newGame());
-  //put info into the DOM (text'C'ontent not text'c'ontent); .join('') takes away the commas in array.
-  
   document.getElementById("underscores").innerHTML = underscoreArr.join('');
+  
+  
+  
 }
 
 //Letter Guess Fucntion start -->
 
 document.onkeyup = function (event) {
   guessedLetter = event.key.toUpperCase();
-
   // function letterGuess (letter) {
   //Make sure the game does not run without hitting the new game button, and checking if letter is existing inside of the word.
   if (gameOn === true && newWord.indexOf(guessedLetter) > -1) {
